@@ -3,6 +3,7 @@
 
 
 using CRM.Models;
+using CRM.Services;
 
 namespace CRM
 {
@@ -12,13 +13,49 @@ namespace CRM
         {
             Console.WriteLine("Hello, World");
 
-            // Prospect
-            Adresse adresse = new Adresse("5 rue Jouillard", "", "Grenoble", "38100", "France");
-            Prospect prospect = new Prospect("Doe", "Jhon", "0637706123", "mail@example.com", "0000", adresse);
 
-            // Client
-            Client client = new Client("Doe", "Client", "0637706128", "mail@example.com", "0000", adresse);
+            ClientService.ajoutClient(null);
+
+            ClientService.ajoutClient(null);
+
+            ProspectService.ajoutProspect();
+
+            afficherNombreClientsProspects();
+
+            Prospect prospect = ProspectService.first();
+
+            ProspectService.transformerEnClient(prospect);
+
+            afficherNombreClientsProspects();
+            afficherNombreClients();
+            afficherNombreProspects();
+
+            ProspectService.faireUneOffre(prospect);
+            ProspectService.accepterOffre(prospect);
+            ProspectService.transformerEnClient(prospect);
+
+            afficherNombreClientsProspects();
+            afficherNombreClients();
+            afficherNombreProspects();
 
         }
+
+
+        public static void afficherNombreClientsProspects()
+        {
+            Console.WriteLine("Nb Clients & Prospects: " + GlobalService.nombreClientsEtProspects());
+        }
+
+
+        public static void afficherNombreProspects()
+        {
+            Console.WriteLine("Nb Prospects: " + ProspectService.count());
+        }
+
+        public static void afficherNombreClients()
+        {
+            Console.WriteLine("Nb Clients: " + ClientService.count());
+        }
+
     }
 }

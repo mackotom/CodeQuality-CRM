@@ -6,20 +6,27 @@ using System.Threading.Tasks;
 
 namespace CRM.Models
 {
-    internal class Prospect : Contact
+    public class Prospect : Contact
     {
-        public int id { get; set; }
 
         public DateTime contact_time { get; set; }
 
         public List<Client> clients { get; set; }
 
+        public Offre? offre { get; set; }
 
         public Prospect(string nom, string prenom, string mobile, string mail, string raison_social, Adresse adresse) : 
             base(nom, prenom, mobile, mail, raison_social, adresse)
         {
             this.contact_time = DateTime.Now;
             this.clients = new List<Client>();
+            this.offre = null;
+        }
+
+
+        public bool aEuUneOffre()
+        {
+            return this.offre != null;
         }
 
 

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace CRM.Models
 {
-    internal class Offre
+    public class Offre : Model
     {
-        public int id { get; set; }
 
         public string nom { get; set; }
 
@@ -16,11 +15,14 @@ namespace CRM.Models
 
         public DateTime date_validite { get; set; }
 
+        public bool accepte { get; set; }
+
         public Offre(string nom, decimal montant, DateTime date_validite)
         {
             this.nom = nom;
             this.montant = montant;
             this.date_validite = date_validite;
+            this.accepte = false;
         }
 
     }

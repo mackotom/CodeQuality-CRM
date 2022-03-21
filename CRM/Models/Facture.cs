@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace CRM.Models
 {
-    internal class Facture
+    public class Facture : Model
     {
-        public int id { get; set; }
 
         public decimal montant { get; set; }
 
@@ -16,12 +16,12 @@ namespace CRM.Models
 
         public DateTime date_paiement { get; set; }
 
-        public string etat { get; set; }
+        public FactureEtat etat { get; set; }
 
         public Offre offre { get; set; }
 
 
-        public Facture (decimal montant, DateTime date_emission, DateTime date_paiement, string etat, Offre offre)
+        public Facture (decimal montant, DateTime date_emission, DateTime date_paiement, FactureEtat etat, Offre offre)
         {
             this.montant = montant;
             this.date_emission = date_emission;
@@ -30,6 +30,9 @@ namespace CRM.Models
             this.offre = offre;
 
         }
+
+
+        
 
 
     }

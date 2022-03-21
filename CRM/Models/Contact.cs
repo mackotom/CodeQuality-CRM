@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRM.Models
 {
-    internal class Contact
+    public abstract class Contact : Model
     {
         public int id { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRM.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace CRM.Models
 {
-    internal class Client : Contact
+    public class Client : Contact
     {
-
-        public int id { get; set; }
 
         public List<Facture> factures { get; set; }
 
@@ -21,6 +20,11 @@ namespace CRM.Models
             this.recurrent = false;
         }
 
+
+        bool toutesFacturesPayes()
+        {
+            return this.factures.Where(facture => facture.etat != FactureEtat.PAYE).Count() <= 0;
+        }
 
 
     }
