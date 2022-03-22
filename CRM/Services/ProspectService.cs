@@ -45,7 +45,7 @@ namespace CRM.Services
             long temps_courant_secondes = ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds();
 
 
-            if (prospect_contact_secondes < temps_courant_secondes + 86400 && prospect.aEuUneOffre() && prospect.offre.accepte)
+            if (prospect_contact_secondes < temps_courant_secondes + 86400 && prospect.aEuUneOffre() && prospect.aAccepteOffre())
             {
 
                 Client client = ClientService.ajouterClient(

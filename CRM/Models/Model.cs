@@ -4,7 +4,7 @@
     {
         public string guid { get; }
 
-        public Model()
+        protected Model()
         {
             guid = Guid.NewGuid().ToString();
         }

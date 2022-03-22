@@ -1,8 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-// Console.WriteLine("Hello, World!");
-
-
-using CRM.Models;
+﻿using CRM.Models;
 using CRM.Repositories;
 using CRM.Services;
 
@@ -15,6 +11,7 @@ namespace CRM
             Console.WriteLine("Hello, World");
 
             // Seeder
+            Stores.AppStore.init();
             Stores.AppStore.seed();
 
 
@@ -42,6 +39,11 @@ namespace CRM
             afficherNombreClients();
             afficherNombreProspects();
 
+            ClientRepository clientRepository = new ClientRepository();
+            Client client = clientRepository.first();
+
+            afficherClientPayeToutesSesFactures(client);
+
         }
 
 
@@ -61,5 +63,12 @@ namespace CRM
             Console.WriteLine("Nb Clients: " + ClientService.nombreClients());
         }
 
+
+        public static void afficherClientPayeToutesSesFactures(Client client)
+        {
+
+            string statut = client.toutesFacturesPayes() ? "oui" : "non";
+            Console.WriteLine("Client: " + client.guid + " a payé toutes ses factures : " + statut);
+        }
     }
 }

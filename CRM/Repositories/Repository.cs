@@ -2,7 +2,7 @@
 
 namespace CRM.Repositories
 {
-    public abstract class Repository<T> : RepositoryInterface<T> where T : class
+    public abstract class Repository<T> : IRepository<T> where T : class
     {
         public void add(T model)
         {
@@ -32,7 +32,7 @@ namespace CRM.Repositories
 
         public int count()
         {
-            return this.getStore().Count();
+            return this.getStore().Count;
         }
 
 
