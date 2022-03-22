@@ -6,9 +6,10 @@ namespace CRM.Stores
     public static class AppStore
     {
 
-        public static List<Client>? clients;
+        public static List<Client>? clients { get; set; }
 
-        public static List<Prospect>? prospects;
+        public static List<Prospect>? prospects { get; set; }
+
 
         public static void init()
         {
@@ -23,6 +24,8 @@ namespace CRM.Stores
             prospect_seeder.seed();
             client_seeder.seed();
         }
+
+
 
     }
 }
