@@ -1,4 +1,5 @@
 ﻿using CRM.Models;
+using CRM.Repositories;
 using CRM.Stores;
 
 
@@ -7,13 +8,14 @@ namespace CRM.Services
     public static class ProspectService
     {
 
-        public static Prospect ajoutProspect()
+        public static Prospect ajouterProspect(string nom, string prenom, string mobile, string mail, string raison_social, Adresse adresse)
         {
-            Adresse adresse = new Adresse("5 rue O nyme", "", "Grenoble", "38100", "France");
-            Prospect prospect = new Prospect("Koko", "Prenom", "063770123", "prospect@example.com", "0002", adresse);
 
-            AppStore.prospects.Add(prospect);
-
+            Prospect prospect = new Prospect(nom, prenom, mobile, mail, raison_social, adresse);
+            
+            ProspectRepository prospectRepository = new ProspectRepository();
+            prospectRepository.add(prospect);
+            
             return prospect;
 
         }
@@ -21,13 +23,15 @@ namespace CRM.Services
 
         public static void supprimerProspect(Prospect prospect)
         {
-            AppStore.prospects.Remove(prospect);
+            ProspectRepository prospectRepository = new ProspectRepository();
+
+            prospectRepository.delete(prospect);
         }
 
 
-        public static void faireUneOffre(Prospect prospect)
+        public static void faireUneOffre(Prospect prospect, string nom, decimal montant, int jours)
         {
-            Offre offre = new Offre("Viande Fraiche", 300, DateTime.Now.AddDays(7));
+            Offre offre = new Offre(nom, montant, DateTime.Now.AddDays(jours));
 
             prospect.offre = offre;
 
@@ -43,26 +47,22 @@ namespace CRM.Services
 
             if (prospect_contact_secondes < temps_courant_secondes + 86400 && prospect.aEuUneOffre() && prospect.offre.accepte)
             {
-                Client client = new Client(prospect.nom, prospect.prenom, prospect.mobile, prospect.mail, prospect.raison_social, prospect.adresse);
-                
+
+                Client client = ClientService.ajouterClient(
+                    prospect.nom,
+                    prospect.prenom,
+                    prospect.mobile,
+                    prospect.mail,
+                    prospect.raison_social,
+                    prospect.adresse
+                );
+
                 supprimerProspect(prospect);
-                
-                ClientService.ajoutClient(client);
 
                 return client;
             }
 
             return null;
-        }
-
-
-        public static Prospect first()
-        {
-            return AppStore.prospects.First();
-        }
-
-        public static int count() { 
-            return AppStore.prospects.Count; 
         }
 
 
@@ -77,6 +77,14 @@ namespace CRM.Services
 
             return false;
 
+        }
+
+
+        public static int nombreProspects()
+        {
+            ProspectRepository prospectRepository = new ProspectRepository();
+
+            return prospectRepository.count();
         }
 
     }

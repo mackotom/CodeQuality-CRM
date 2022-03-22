@@ -1,4 +1,5 @@
 ﻿using CRM.Models;
+using CRM.Stores.Seeders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,15 @@ namespace CRM.Stores
         public static List<Prospect> prospects = new List<Prospect>();
 
 
+
+        public static void seed()
+        {
+            ProspectSeeder prospect_seeder = new ProspectSeeder();
+            ClientSeeder client_seeder = new ClientSeeder();
+
+            prospect_seeder.seed();
+            client_seeder.seed();
+        }
 
     }
 }

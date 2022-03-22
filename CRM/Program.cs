@@ -3,6 +3,7 @@
 
 
 using CRM.Models;
+using CRM.Repositories;
 using CRM.Services;
 
 namespace CRM
@@ -13,16 +14,19 @@ namespace CRM
         {
             Console.WriteLine("Hello, World");
 
+            // Seeder
+            Stores.AppStore.seed();
 
-            ClientService.ajoutClient(null);
 
-            ClientService.ajoutClient(null);
+            ProspectRepository prospectRepository = new ProspectRepository();
 
-            ProspectService.ajoutProspect();
+
+            Adresse adresse = new Adresse("l1", "l2", "Grenoble", "38100", "France");
+            ProspectService.ajouterProspect("Prospect1", "prop", "0090", "example.com", "002", adresse);
 
             afficherNombreClientsProspects();
 
-            Prospect prospect = ProspectService.first();
+            Prospect prospect = prospectRepository.first();
 
             ProspectService.transformerEnClient(prospect);
 
@@ -30,7 +34,7 @@ namespace CRM
             afficherNombreClients();
             afficherNombreProspects();
 
-            ProspectService.faireUneOffre(prospect);
+            ProspectService.faireUneOffre(prospect, "Viande Fraiche", 300, 5);
             ProspectService.accepterOffre(prospect);
             ProspectService.transformerEnClient(prospect);
 
@@ -49,12 +53,12 @@ namespace CRM
 
         public static void afficherNombreProspects()
         {
-            Console.WriteLine("Nb Prospects: " + ProspectService.count());
+            Console.WriteLine("Nb Prospects: " + ProspectService.nombreProspects());
         }
 
         public static void afficherNombreClients()
         {
-            Console.WriteLine("Nb Clients: " + ClientService.count());
+            Console.WriteLine("Nb Clients: " + ClientService.nombreClients());
         }
 
     }

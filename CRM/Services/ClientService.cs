@@ -1,10 +1,5 @@
 ﻿using CRM.Models;
-using CRM.Stores;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CRM.Repositories;
 
 namespace CRM.Services
 {
@@ -12,37 +7,35 @@ namespace CRM.Services
     {
 
 
-        public static Client ajoutClient(Client? client_base)
+        public static Client ajouterClient(string nom, string prenom, string mobile, string mail, string raison_social, Adresse adresse )
         {
 
-            Client? client = null;
+            Client client = new Client(nom, prenom, mobile, mail, raison_social, adresse);
 
-            if(client_base == null)
-            {
-                Adresse adresse = new Adresse("5 rue O nyme", "", "Grenoble", "38100", "France");
-                client = new Client("Doe", "Jhon", "0627706121", "mail@example.com", "0001", adresse);
-            }
-            else
-            {
-                client = client_base;
-            }
-            
-            
-            AppStore.clients.Add(client);
+            ClientRepository clientRepository = new ClientRepository();
+
+            clientRepository.add(client);
 
             return client;
         }
 
 
         public static void supprimerClient(Client client)
-        {   
-            AppStore.clients.Remove(client);
+        {
+            ClientRepository clientRepository = new ClientRepository();
+
+            clientRepository.delete(client);
+  
         }
 
 
-        public static int count() { 
-            return AppStore.clients.Count; 
-        } 
+        public static int nombreClients ()
+        {
+            ClientRepository clientRepository = new ClientRepository();
+
+            return clientRepository.count();
+        }
+
 
     }
 }
