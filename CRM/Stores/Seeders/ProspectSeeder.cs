@@ -10,10 +10,10 @@ namespace CRM.Stores.Seeders
             Adresse adresse = new Adresse("5 rue O nyme", "", "Grenoble", "38100", "France");
             Prospect prospect = new Prospect("Koko", "Prenom", "063770123", "prospect@example.com", "0002", adresse);
 
-            AppStore.prospects.Add(prospect);
+            AppStore.Prospects.Add(prospect);
 
             Prospect prospect_deux = new Prospect("Tabac", "Bar", "063770123", "prospect@example.com", "0003", adresse);
-            AppStore.prospects.Add(prospect_deux);
+            AppStore.Prospects.Add(prospect_deux);
 
         }
     }

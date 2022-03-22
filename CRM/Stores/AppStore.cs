@@ -6,16 +6,21 @@ namespace CRM.Stores
     public static class AppStore
     {
 
-        public static List<Client>? clients { get; set; }
+        private static readonly List<Client> clients = new List<Client>();
 
-        public static List<Prospect>? prospects { get; set; }
-
-
-        public static void init()
+        public static List<Client> Clients
         {
-            clients = new List<Client>();
-            prospects = new List<Prospect>();
+            get { return clients; }
         }
+
+        private static readonly List<Prospect> prospects = new List<Prospect>();
+
+        public static List<Prospect> Prospects
+        {
+            get { return prospects; }
+        }
+
+
 
         public static void seed()
         {

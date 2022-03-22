@@ -11,7 +11,6 @@ namespace CRM
             Console.WriteLine("Hello, World");
 
             // Seeder
-            Stores.AppStore.init();
             Stores.AppStore.seed();
 
 

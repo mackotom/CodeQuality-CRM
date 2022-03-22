@@ -8,7 +8,7 @@ namespace CRM.Repositories
 
         internal override List<Prospect> getStore()
         {
-            return AppStore.prospects;
+            return AppStore.Prospects;
         }
 
     }
