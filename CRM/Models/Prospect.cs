@@ -30,6 +30,11 @@ namespace CRM.Models
         }
 
 
+        public bool aAccepteOffre()
+        {
+            return this.offre != null && this.offre.accepte;
+        }
+
 
     }
 }

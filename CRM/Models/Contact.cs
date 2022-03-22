@@ -23,7 +23,7 @@ namespace CRM.Models
         public Adresse adresse { get; set; }
 
         
-        public Contact (string nom, string prenom, string mobile, string mail, string raison_social, Adresse adresse)
+        protected Contact (string nom, string prenom, string mobile, string mail, string raison_social, Adresse adresse)
         {
             this.nom = nom;
             this.prenom = prenom;

@@ -9,15 +9,15 @@ namespace CRM.Models
     public class Adresse : Model
     {
 
-        public string premiere_ligne;
+        public string premiere_ligne { get; set; }
 
-        public string seconde_ligne;
+        public string seconde_ligne { get; set; }
 
-        public string ville;
+        public string ville { get; set; }
 
-        public string code_postal;
+        public string code_postal { get; set; }
 
-        public string pays;
+        public string pays { get; set; }
 
 
         public Adresse(string premiere_ligne, string seconde_ligne, string ville, string code_postal, string pays)

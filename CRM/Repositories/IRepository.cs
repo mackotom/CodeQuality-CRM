@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRM.Repositories
 {
-    public interface RepositoryInterface<T> where T : class
+    public interface IRepository<T> where T : class
     {
 
         List<T> getAll();
