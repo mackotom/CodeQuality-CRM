@@ -2,7 +2,7 @@
 
 namespace CRM.Stores.Seeders
 {
-    public class ClientSeeder : SeederInterface
+    public class ClientSeeder : ISeeder
     {
 
 

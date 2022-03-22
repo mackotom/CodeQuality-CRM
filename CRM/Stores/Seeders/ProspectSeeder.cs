@@ -2,7 +2,7 @@
 
 namespace CRM.Stores.Seeders
 {
-    public class ProspectSeeder : SeederInterface
+    public class ProspectSeeder : ISeeder
     {
         public void seed()
         {
