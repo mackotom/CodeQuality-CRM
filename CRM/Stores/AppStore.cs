@@ -32,5 +32,12 @@ namespace CRM.Stores
 
 
 
+        public static void clear()
+        {
+            prospects.Clear();
+            clients.Clear();
+        }
+
+
     }
 }
