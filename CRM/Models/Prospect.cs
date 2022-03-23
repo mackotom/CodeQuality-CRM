@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRM.Models
 {
-    public class Prospect : Contact
+    public class Prospect : Contact, IProspect
     {
 
         public DateTime contact_time { get; set; }
@@ -15,7 +15,7 @@ namespace CRM.Models
 
         public Offre? offre { get; set; }
 
-        public Prospect(string nom, string prenom, string mobile, string mail, string raison_social, Adresse adresse) : 
+        public Prospect(string nom, string prenom, string mobile, string mail, string raison_social, Adresse adresse) :
             base(nom, prenom, mobile, mail, raison_social, adresse)
         {
             this.contact_time = DateTime.Now;

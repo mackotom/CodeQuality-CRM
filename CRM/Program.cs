@@ -13,26 +13,26 @@ namespace CRM
             // Seeder
             Stores.AppStore.seed();
 
-
+            
             ProspectRepository prospectRepository = new ProspectRepository();
-
+            ProspectService prospectService = new ProspectService();
 
             Adresse adresse = new Adresse("l1", "l2", "Grenoble", "38100", "France");
-            ProspectService.ajouterProspect("Prospect1", "prop", "0090", "example.com", "002", adresse);
+            prospectService.ajouterProspect("Prospect1", "prop", "0090", "example.com", "002", adresse);
 
             afficherNombreClientsProspects();
 
             Prospect prospect = prospectRepository.first();
 
-            ProspectService.transformerEnClient(prospect);
+            prospectService.transformerEnClient(prospect);
 
             afficherNombreClientsProspects();
             afficherNombreClients();
             afficherNombreProspects();
 
-            ProspectService.faireUneOffre(prospect, "Viande Fraiche", 300, 5);
-            ProspectService.accepterOffre(prospect);
-            ProspectService.transformerEnClient(prospect);
+            prospectService.faireUneOffre(prospect, "Viande Fraiche", 300, 5);
+            prospectService.accepterOffre(prospect);
+            prospectService.transformerEnClient(prospect);
 
             afficherNombreClientsProspects();
             afficherNombreClients();
@@ -48,18 +48,18 @@ namespace CRM
 
         public static void afficherNombreClientsProspects()
         {
-            Console.WriteLine("Nb Clients & Prospects: " + GlobalService.nombreClientsEtProspects());
+            Console.WriteLine("Nb Clients & Prospects: " + getGlobalService().nombreClientsEtProspects());
         }
 
 
         public static void afficherNombreProspects()
         {
-            Console.WriteLine("Nb Prospects: " + ProspectService.nombreProspects());
+            Console.WriteLine("Nb Prospects: " + getProspectService().nombreProspects());
         }
 
         public static void afficherNombreClients()
         {
-            Console.WriteLine("Nb Clients: " + ClientService.nombreClients());
+            Console.WriteLine("Nb Clients: " + getClientService().nombreClients());
         }
 
 
@@ -69,5 +69,22 @@ namespace CRM
             string statut = client.toutesFacturesPayes() ? "oui" : "non";
             Console.WriteLine("Client: " + client.guid + " a payé toutes ses factures : " + statut);
         }
+
+
+        public static ClientService getClientService()
+        {
+            return new ClientService();
+        }
+
+        public static ProspectService getProspectService()
+        {
+            return new ProspectService();
+        }
+
+        public static GlobalService getGlobalService()
+        {
+            return new GlobalService();
+        }
+
     }
 }

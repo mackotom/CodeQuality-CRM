@@ -2,7 +2,7 @@
 
 namespace CRM.Models
 {
-    public class Client : Contact
+    public class Client : Contact, IClient
     {
 
         public List<Facture> factures { get; set; }

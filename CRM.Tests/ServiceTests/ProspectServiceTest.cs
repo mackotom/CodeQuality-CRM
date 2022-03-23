@@ -10,7 +10,7 @@ namespace CRM.Tests.ServiceTests
         [TestMethod]
         public void TestAjouterProspect()
         {
-            var prospect = ProspectService.ajouterProspect("n1", "p1", "0", "m@example.com", "0001", this.CreerFausseAdresse());
+            var prospect = getProspectService().ajouterProspect("n1", "p1", "0", "m@example.com", "0001", CreerFausseAdresse());
 
             Assert.IsNotNull(prospect);
 
@@ -21,11 +21,11 @@ namespace CRM.Tests.ServiceTests
         public void TestSupprimerProspect()
         {
 
-            var prospect = ProspectService.ajouterProspect("n1", "p1", "0", "m@example.com", "001", this.CreerFausseAdresse());
+            var prospect = getProspectService().ajouterProspect("n1", "p1", "0", "m@example.com", "001", CreerFausseAdresse());
 
             Assert.IsTrue(Stores.AppStore.Prospects.Contains(prospect));
 
-            ProspectService.supprimerProspect(prospect);
+            getProspectService().supprimerProspect(prospect);
 
             Assert.IsTrue(!Stores.AppStore.Prospects.Contains(prospect));
 
@@ -34,11 +34,11 @@ namespace CRM.Tests.ServiceTests
         [TestMethod]
         public void TestFaireUneOffre()
         {
-            var prospect = this.CreerFauxProspect();
+            var prospect = CreerFauxProspect();
 
             Assert.IsNull(prospect.offre);
 
-            ProspectService.faireUneOffre(prospect, "YOLOOFFER", 10, 3);
+            getProspectService().faireUneOffre(prospect, "YOLOOFFER", 10, 3);
 
             Assert.IsNotNull(prospect.offre);
 
@@ -51,12 +51,12 @@ namespace CRM.Tests.ServiceTests
         [TestMethod]
         public void TestTransformerEnClient()
         {
-            var prospect = this.CreerFauxProspect();
+            var prospect = CreerFauxProspect();
 
 
-            ProspectService.faireUneOffre(prospect, "o", 10, 2);
-            ProspectService.accepterOffre(prospect);
-            var client = ProspectService.transformerEnClient(prospect);
+            getProspectService().faireUneOffre(prospect, "o", 10, 2);
+            getProspectService().accepterOffre(prospect);
+            var client = getProspectService().transformerEnClient(prospect);
 
             Assert.IsTrue(!Stores.AppStore.Prospects.Contains(prospect));
 
@@ -75,11 +75,11 @@ namespace CRM.Tests.ServiceTests
         [TestMethod]
         public void TestTransformerEnClientEchecSiPasOffre() {
 
-            var prospect = this.CreerFauxProspect();
+            var prospect = CreerFauxProspect();
 
             if(prospect.offre == null)
             {
-                var client = ProspectService.transformerEnClient(prospect);
+                var client = getProspectService().transformerEnClient(prospect);
 
                 Assert.IsNull(client);
                 
@@ -95,13 +95,13 @@ namespace CRM.Tests.ServiceTests
         [TestMethod]
         public void TestTransformerEnClientEchecSiPasAccepterOffre() {
 
-            var prospect = this.CreerFauxProspect();
+            var prospect = CreerFauxProspect();
 
-            ProspectService.faireUneOffre(prospect, "Offre", 100, 1);
+            getProspectService().faireUneOffre(prospect, "Offre", 100, 1);
 
             if(!prospect.aAccepteOffre())
             {
-                var client = ProspectService.transformerEnClient(prospect);
+                var client = getProspectService().transformerEnClient(prospect);
 
                 Assert.IsNull(client);
             }
@@ -117,13 +117,13 @@ namespace CRM.Tests.ServiceTests
         [TestMethod]
         public void TestAccepterOffre()
         {
-            var prospect = this.CreerFauxProspect();
+            var prospect = CreerFauxProspect();
 
-            ProspectService.faireUneOffre(prospect, "Offre", 100, 1);
+            getProspectService().faireUneOffre(prospect, "Offre", 100, 1);
 
             Assert.IsTrue(prospect.aEuUneOffre() && !prospect.aAccepteOffre());
 
-            ProspectService.accepterOffre(prospect);
+            getProspectService().accepterOffre(prospect);
 
             Assert.IsTrue(prospect.aEuUneOffre() && prospect.aAccepteOffre());
 
@@ -134,11 +134,11 @@ namespace CRM.Tests.ServiceTests
         {
             Stores.AppStore.clear();
 
-            Assert.IsTrue(ProspectService.nombreProspects() == 0);
+            Assert.IsTrue(getProspectService().nombreProspects() == 0);
 
-            ProspectService.ajouterProspect("n1", "p1", "0", "mail@example.com", "0989", this.CreerFausseAdresse());
+            getProspectService().ajouterProspect("n1", "p1", "0", "mail@example.com", "0989", CreerFausseAdresse());
 
-            Assert.IsTrue(ProspectService.nombreProspects() == 1);
+            Assert.IsTrue(getProspectService().nombreProspects() == 1);
 
         }
 

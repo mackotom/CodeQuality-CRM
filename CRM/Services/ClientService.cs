@@ -3,37 +3,39 @@ using CRM.Repositories;
 
 namespace CRM.Services
 {
-    public static class ClientService
+    public class ClientService : Service, IClientService
     {
 
+        private readonly IRepository<Client> _clientRepository;
 
-        public static Client ajouterClient(string nom, string prenom, string mobile, string mail, string raison_social, Adresse adresse )
+        public ClientService()
+        {
+            _clientRepository = new ClientRepository();
+        }
+
+        public Client ajouterClient(string nom, string prenom, string mobile, string mail, string raison_social, Adresse adresse)
         {
 
             Client client = new Client(nom, prenom, mobile, mail, raison_social, adresse);
 
-            ClientRepository clientRepository = new ClientRepository();
-
-            clientRepository.add(client);
+            _clientRepository.add(client);
 
             return client;
+
         }
 
 
-        public static void supprimerClient(Client client)
+        public void supprimerClient(Client client)
         {
-            ClientRepository clientRepository = new ClientRepository();
 
-            clientRepository.delete(client);
-  
+            _clientRepository.delete(client);
+
         }
 
 
-        public static int nombreClients ()
+        public int nombreClients()
         {
-            ClientRepository clientRepository = new ClientRepository();
-
-            return clientRepository.count();
+            return _clientRepository.count();
         }
 
 

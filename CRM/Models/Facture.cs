@@ -2,7 +2,7 @@
 
 namespace CRM.Models
 {
-    public class Facture : Model
+    public class Facture : Model, IFacture
     {
 
         public decimal montant { get; set; }
@@ -16,7 +16,7 @@ namespace CRM.Models
         public Offre offre { get; set; }
 
 
-        public Facture (decimal montant, DateTime date_emission, DateTime date_paiement, FactureEtat etat, Offre offre)
+        public Facture(decimal montant, DateTime date_emission, DateTime date_paiement, FactureEtat etat, Offre offre)
         {
             this.montant = montant;
             this.date_emission = date_emission;
@@ -27,7 +27,7 @@ namespace CRM.Models
         }
 
 
-        
+
 
 
     }

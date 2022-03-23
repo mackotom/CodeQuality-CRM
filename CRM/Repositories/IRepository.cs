@@ -18,5 +18,6 @@ namespace CRM.Repositories
         void delete(T model);
 
         int count();
+
     }
 }

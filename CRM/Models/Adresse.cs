@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRM.Models
 {
-    public class Adresse : Model
+    public class Adresse : Model, IAdresse
     {
 
         public string premiere_ligne { get; set; }
