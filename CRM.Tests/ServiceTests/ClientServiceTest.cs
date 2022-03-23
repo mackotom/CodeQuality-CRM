@@ -10,7 +10,7 @@ namespace CRM.Tests.ServiceTests
         [TestMethod]
         public void TestAjouterClient()
         {
-            var client = getClientService().ajouterClient("nom1", "prenom1", "0637706126", "fake@example.com", "0001", this.CreerFausseAdresse());
+            var client = getClientService().ajouterClient("nom1", "prenom1", "0637706126", "fake@example.com", "0001", CreerFausseAdresse());
 
             Assert.IsTrue(Stores.AppStore.Clients.Contains(client));
 
@@ -19,7 +19,7 @@ namespace CRM.Tests.ServiceTests
         [TestMethod]
         public void TestSupprimerClient() {
         
-            var client = getClientService().ajouterClient("n1", "p1", "m1", "m@example.com", "0001", this.CreerFausseAdresse());
+            var client = getClientService().ajouterClient("n1", "p1", "m1", "m@example.com", "0001", CreerFausseAdresse());
 
             Assert.IsTrue(Stores.AppStore.Clients.Contains(client));
 

@@ -6,7 +6,7 @@ namespace CRM.Services
     public class ClientService : Service, IClientService
     {
 
-        private IRepository<Client> _clientRepository;
+        private readonly IRepository<Client> _clientRepository;
 
         public ClientService()
         {

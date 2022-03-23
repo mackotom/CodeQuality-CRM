@@ -8,7 +8,7 @@ namespace CRM.Services
     public class ProspectService : Service, IProspectService
     {
 
-        private IRepository<Prospect> _prospectRepository;
+        private readonly IRepository<Prospect> _prospectRepository;
 
         public ProspectService()
         {

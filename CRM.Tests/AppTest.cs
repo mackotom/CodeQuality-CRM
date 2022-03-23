@@ -8,35 +8,35 @@ namespace CRM.Tests
 
 
 
-        protected Adresse CreerFausseAdresse()
+        protected static Adresse CreerFausseAdresse()
         {
             return new Adresse("l1", "l2", "Grenoble", "38100", "France");
         }
 
 
-        protected Prospect CreerFauxProspect()
+        protected static Prospect CreerFauxProspect()
         {
-            return new Prospect("n1", "p1", "0909090909", "prospect@exple.com", "0001", this.CreerFausseAdresse());
+            return new Prospect("n1", "p1", "0909090909", "prospect@exple.com", "0001", CreerFausseAdresse());
         }
 
-        protected Client CreerFauxClient()
+        protected static Client CreerFauxClient()
         {
-            return new Client("n1", "p1", "08989898", "client@example.com", "0002", this.CreerFausseAdresse());
+            return new Client("n1", "p1", "08989898", "client@example.com", "0002", CreerFausseAdresse());
         }
 
 
-        protected ClientService getClientService()
+        protected static ClientService getClientService()
         {
             return new ClientService();
         }
 
 
-        protected GlobalService getGlobalService()
+        protected static GlobalService getGlobalService()
         {
             return new GlobalService();
         }
 
-        protected ProspectService getProspectService()
+        protected static ProspectService getProspectService()
         {
             return new ProspectService();
         }

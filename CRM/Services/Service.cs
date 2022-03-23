@@ -1,6 +1,4 @@
-﻿using CRM.Core;
-
-namespace CRM.Services
+﻿namespace CRM.Services
 {
     abstract public class Service
     {

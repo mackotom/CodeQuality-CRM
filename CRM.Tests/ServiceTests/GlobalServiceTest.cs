@@ -15,9 +15,9 @@ namespace CRM.Tests.ServiceTests
 
             Assert.IsTrue(getGlobalService().nombreClientsEtProspects() == 0);
 
-            getProspectService().ajouterProspect("n1", "p1", "0", "mail@example.com", "0009", this.CreerFausseAdresse());
+            getProspectService().ajouterProspect("n1", "p1", "0", "mail@example.com", "0009", CreerFausseAdresse());
 
-            getClientService().ajouterClient("n1", "p1", "0", "mail@example.com", "0001", this.CreerFausseAdresse());
+            getClientService().ajouterClient("n1", "p1", "0", "mail@example.com", "0001", CreerFausseAdresse());
 
             Assert.IsTrue(getGlobalService().nombreClientsEtProspects() == 2);
             

@@ -4,8 +4,8 @@ namespace CRM.Services
     public class GlobalService : Service, IGlobalService
     {
 
-        private ClientService _clientService;
-        private ProspectService _prospectService;
+        private readonly ClientService _clientService;
+        private readonly ProspectService _prospectService;
 
         public GlobalService()
         {
