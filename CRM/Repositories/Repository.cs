@@ -1,6 +1,4 @@
-﻿using CRM.Stores;
-
-namespace CRM.Repositories
+﻿namespace CRM.Repositories
 {
     public abstract class Repository<T> : IRepository<T> where T : class
     {
@@ -37,7 +35,5 @@ namespace CRM.Repositories
 
 
         internal abstract List<T> getStore();
-
-
     }
 }

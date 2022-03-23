@@ -1,4 +1,5 @@
 ﻿using CRM.Models;
+using CRM.Services;
 
 namespace CRM.Tests
 {
@@ -21,6 +22,23 @@ namespace CRM.Tests
         protected Client CreerFauxClient()
         {
             return new Client("n1", "p1", "08989898", "client@example.com", "0002", this.CreerFausseAdresse());
+        }
+
+
+        protected ClientService getClientService()
+        {
+            return new ClientService();
+        }
+
+
+        protected GlobalService getGlobalService()
+        {
+            return new GlobalService();
+        }
+
+        protected ProspectService getProspectService()
+        {
+            return new ProspectService();
         }
 
     }

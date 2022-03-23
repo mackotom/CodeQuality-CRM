@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRM.Models
 {
-    public class Offre : Model
+    public class Offre : Model, IOffre
     {
 
         public string nom { get; set; }

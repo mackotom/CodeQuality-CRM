@@ -13,13 +13,13 @@ namespace CRM.Tests.ServiceTests
 
             Stores.AppStore.clear();
 
-            Assert.IsTrue(GlobalService.nombreClientsEtProspects() == 0);
+            Assert.IsTrue(getGlobalService().nombreClientsEtProspects() == 0);
 
-            ProspectService.ajouterProspect("n1", "p1", "0", "mail@example.com", "0009", this.CreerFausseAdresse());
+            getProspectService().ajouterProspect("n1", "p1", "0", "mail@example.com", "0009", this.CreerFausseAdresse());
 
-            ClientService.ajouterClient("n1", "p1", "0", "mail@example.com", "0001", this.CreerFausseAdresse());
+            getClientService().ajouterClient("n1", "p1", "0", "mail@example.com", "0001", this.CreerFausseAdresse());
 
-            Assert.IsTrue(GlobalService.nombreClientsEtProspects() == 2);
+            Assert.IsTrue(getGlobalService().nombreClientsEtProspects() == 2);
             
         }
     }

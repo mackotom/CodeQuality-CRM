@@ -1,12 +1,21 @@
-﻿namespace CRM.Services
+﻿
+namespace CRM.Services
 {
-    public static class GlobalService
+    public class GlobalService : Service
     {
 
-        public static int nombreClientsEtProspects()
+        private ClientService _clientService;
+        private ProspectService _prospectService;
+
+        public GlobalService() { 
+            _clientService = new ClientService();
+            _prospectService = new ProspectService();
+        }
+
+        public int nombreClientsEtProspects()
         {
 
-            return ClientService.nombreClients() + ProspectService.nombreProspects();
+            return _clientService.nombreClients() + _prospectService.nombreProspects();
         }
 
     }

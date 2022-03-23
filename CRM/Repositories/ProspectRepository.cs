@@ -3,7 +3,7 @@ using CRM.Stores;
 
 namespace CRM.Repositories
 {
-    public class ProspectRepository : Repository <Prospect>
+    public class ProspectRepository : Repository<Prospect>
     {
 
         internal override List<Prospect> getStore()
