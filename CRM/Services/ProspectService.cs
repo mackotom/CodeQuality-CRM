@@ -5,7 +5,7 @@ using CRM.Stores;
 
 namespace CRM.Services
 {
-    public class ProspectService : Service
+    public class ProspectService : Service, IProspectService
     {
 
         private IRepository<Prospect> _prospectRepository;
@@ -20,9 +20,9 @@ namespace CRM.Services
         {
 
             Prospect prospect = new Prospect(nom, prenom, mobile, mail, raison_social, adresse);
-            
+
             _prospectRepository.add(prospect);
-            
+
             return prospect;
 
         }
@@ -40,7 +40,7 @@ namespace CRM.Services
 
             prospect.offre = offre;
 
-        } 
+        }
 
 
         public Client? transformerEnClient(Prospect prospect)
@@ -76,7 +76,7 @@ namespace CRM.Services
         public bool accepterOffre(Prospect prospect)
         {
 
-            if(prospect.offre != null)
+            if (prospect.offre != null)
             {
                 prospect.offre.accepte = true;
                 return true;

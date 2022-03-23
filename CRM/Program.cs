@@ -81,7 +81,6 @@ namespace CRM
             return new ProspectService();
         }
 
-
         public static GlobalService getGlobalService()
         {
             return new GlobalService();

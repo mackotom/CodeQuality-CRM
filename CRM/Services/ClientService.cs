@@ -3,7 +3,7 @@ using CRM.Repositories;
 
 namespace CRM.Services
 {
-    public class ClientService : Service
+    public class ClientService : Service, IClientService
     {
 
         private IRepository<Client> _clientRepository;
@@ -13,7 +13,7 @@ namespace CRM.Services
             _clientRepository = new ClientRepository();
         }
 
-        public Client ajouterClient(string nom, string prenom, string mobile, string mail, string raison_social, Adresse adresse )
+        public Client ajouterClient(string nom, string prenom, string mobile, string mail, string raison_social, Adresse adresse)
         {
 
             Client client = new Client(nom, prenom, mobile, mail, raison_social, adresse);
@@ -29,13 +29,13 @@ namespace CRM.Services
         {
 
             _clientRepository.delete(client);
-  
+
         }
 
 
-        public int nombreClients ()
+        public int nombreClients()
         {
-           return  _clientRepository.count();
+            return _clientRepository.count();
         }
 
 

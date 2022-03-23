@@ -1,13 +1,14 @@
 ﻿
 namespace CRM.Services
 {
-    public class GlobalService : Service
+    public class GlobalService : Service, IGlobalService
     {
 
         private ClientService _clientService;
         private ProspectService _prospectService;
 
-        public GlobalService() { 
+        public GlobalService()
+        {
             _clientService = new ClientService();
             _prospectService = new ProspectService();
         }
